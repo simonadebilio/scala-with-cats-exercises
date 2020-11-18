@@ -1,2 +1,10 @@
+.bloop/
+.bsp/
+.idea/
+.metals/
+project/metals.sbt
+target/
+project/boot/
+project/plugins/project/
 *.class
-*.log
+*.metals
