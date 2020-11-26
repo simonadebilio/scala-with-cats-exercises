@@ -42,7 +42,7 @@ object BooleanAndMonoid {
     override def combine(x: Boolean, y: Boolean): Boolean = x && y
   }
 
-  def main(args: Array[String]): Unit = Main.verifyLaws
+  def main(args: Array[String]): Unit = MonoidLaws.verifyLaws
 }
 
 object BooleanOrMonoid {
@@ -52,7 +52,7 @@ object BooleanOrMonoid {
     override def combine(x: Boolean, y: Boolean): Boolean = x || y
   }
 
-  def main(args: Array[String]): Unit = Main.verifyLaws
+  def main(args: Array[String]): Unit = MonoidLaws.verifyLaws
 }
 
 object BooleanXorMonoid {
@@ -62,7 +62,7 @@ object BooleanXorMonoid {
     override def combine(x: Boolean, y: Boolean): Boolean = (x && !y) || (!x && y)
   }
 
-  def main(args: Array[String]): Unit = Main.verifyLaws
+  def main(args: Array[String]): Unit = MonoidLaws.verifyLaws
 }
 
 object BooleanXnorMonoid {
@@ -74,10 +74,10 @@ object BooleanXnorMonoid {
     //      (x && y) || (!x && !y)
   }
 
-  def main(args: Array[String]): Unit = Main.verifyLaws
+  def main(args: Array[String]): Unit = MonoidLaws.verifyLaws
 }
 
-object Main {
+object MonoidLaws {
   def verifyLaws(implicit monoid: Monoid[Boolean]): Unit = {
     assert(identityLaw(true))
     assert(identityLaw(false))
