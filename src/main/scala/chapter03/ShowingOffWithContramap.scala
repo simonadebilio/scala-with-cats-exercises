@@ -8,7 +8,7 @@ object ShowingOffWithContramap {
 
   If you get stuck, think about the types. You need to turn value, which is of type B, into a String.
   What functions and methods do you have available and in what order do they need to be combined?
-  */
+   */
   trait Printable[A] {
     self =>
     def format(value: A): String
@@ -33,19 +33,20 @@ object ShowingOffWithContramap {
         if (value) "yes" else "no"
     }
 
-
   /*
   Now define an instance of Printable for the following Box case class.
   You’ll need to write this as an implicit def as described in Section 1.2.3
    */
   final case class Box[A](value: A)
 
-   /*
+  /*
   Rather than writing out the complete definition from scratch (new Printable[Box] etc...),
   create your instance from an existing instance using contramap.
    */
-  implicit def boxPrintable[A](implicit printableA: Printable[A]): Printable[Box[A]] =
-    printableA.contramap(_.value)
+  implicit def boxPrintable[A](
+      implicit printableA: Printable[A]
+  ): Printable[Box[A]] =
+    printableA.contramap(_.value) // ((b: Box[A]) => b.value)
 
   def main(args: Array[String]): Unit = {
     assert(format("hello") == "'hello'")
