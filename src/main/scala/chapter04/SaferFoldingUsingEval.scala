@@ -9,7 +9,7 @@ The naive implementation of foldRight below is not stack safe. Make it so using 
     as match {
       case head :: tail => fn(head, foldRight(tail, acc)(fn))
       case Nil => acc
-             }
+    }
  */
 object SaferFoldingUsingEval {
   def foldRightEval[A, B](as: List[A], acc: Eval[B])(
