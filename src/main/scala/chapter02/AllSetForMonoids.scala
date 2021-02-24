@@ -15,20 +15,23 @@ object SetUnionMonoid {
 }
 
 object SetIntersectionSemigroup {
-  implicit def setIntersectionSemigroup[A]: Semigroup[Set[A]] = new Semigroup[Set[A]] {
-    override def combine(x: Set[A], y: Set[A]): Set[A] = x intersect y
-  }
+  implicit def setIntersectionSemigroup[A]: Semigroup[Set[A]] =
+    new Semigroup[Set[A]] {
+      override def combine(x: Set[A], y: Set[A]): Set[A] = x intersect y
+    }
 
   def main(args: Array[String]): Unit = Laws.verifyAssociativeLaw
 }
 
 object SymmetricDifferenceMonoid {
-  implicit def symmetricDifferenceMonoid[A]: Monoid[Set[A]] = new Monoid[Set[A]] {
-    override def empty: Set[A] = Set.empty
+  implicit def symmetricDifferenceMonoid[A]: Monoid[Set[A]] =
+    new Monoid[Set[A]] {
+      override def empty: Set[A] = Set.empty
 
-    override def combine(x: Set[A], y: Set[A]): Set[A] = (x union y) diff (x intersect y)
+      override def combine(x: Set[A], y: Set[A]): Set[A] =
+        (x union y) diff (x intersect y)
 //      (x diff y) union (y diff x)
-  }
+    }
 
   def main(args: Array[String]): Unit = Laws.verifyMonoidLaws
 }

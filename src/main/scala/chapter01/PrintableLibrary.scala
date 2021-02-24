@@ -26,9 +26,11 @@ object PrintableInstances {
 //  - print accepts the same parameters as format and returns Unit.
 //    It prints the formatted A value to the console using println.
 object Printable {
-  def format[A](a: A)(implicit printable: Printable[A]): String = printable.format(a)
+  def format[A](a: A)(implicit printable: Printable[A]): String =
+    printable.format(a)
 
-  def print[A](a: A)(implicit printable: Printable[A]): Unit = println(format(a))
+  def print[A](a: A)(implicit printable: Printable[A]): Unit =
+    println(format(a))
 }
 
 /*
@@ -74,10 +76,11 @@ object Cat {
           • print accepts an implicit Printable[A] and returns Unit.
             It prints the wrapped A to the console.
       4. Use the extension methods to print the example Cat you created in the previous exercise.
-   */
+ */
 object PrintableSyntax {
   implicit class PrintableOps[A](value: A) {
-    def format(implicit printable: Printable[A]): String = Printable.format(value)
+    def format(implicit printable: Printable[A]): String =
+      Printable.format(value)
 
     def print(implicit printable: Printable[A]): Unit = Printable.print(value)
   }

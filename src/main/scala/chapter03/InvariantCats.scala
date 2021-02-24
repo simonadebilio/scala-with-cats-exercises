@@ -1,8 +1,7 @@
 package chapter03
 
 import cats.Monoid
-import cats.instances.string._ // for Monoid
-import cats.syntax.invariant._ // for imap
+import cats.instances.string._
 import cats.syntax.semigroup._ // for |+|
 
 object InvariantCats {

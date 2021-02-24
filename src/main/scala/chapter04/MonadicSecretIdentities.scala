@@ -1,7 +1,6 @@
 package chapter04
 
 import cats.Id
-import cats.syntax.either._
 
 object MonadicSecretIdentities {
 

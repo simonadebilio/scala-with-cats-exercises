@@ -8,7 +8,7 @@ The cutting edge SuperAdder v3.5a‐32 is the world’s first choice for adding
 together numbers. The main function in the program has signature def
 add(items: List[Int]): Int. In a tragic accident this code is deleted!
 Rewrite the method and save the day!
-*/
+ */
 object SuperAdder {
   def add(items: List[Int]): Int = items.sum
 }
@@ -35,7 +35,8 @@ object SuperAdder3 {
   implicit val orderMonoid: Monoid[Order] = new Monoid[Order] {
     override def empty: Order = Order(0, 0)
 
-    override def combine(x: Order, y: Order): Order = Order(x.totalCost + y.totalCost, x.quantity + y.quantity)
+    override def combine(x: Order, y: Order): Order =
+      Order(x.totalCost + y.totalCost, x.quantity + y.quantity)
   }
 
   def add[A](items: List[A])(implicit monoid: Monoid[A]): A =

@@ -8,7 +8,7 @@ We’ve seen a few examples of monoids but there are plenty more to be found.
 Consider Boolean. How many monoids can you define for this type?
 For each monoid, define the combine and empty operations and convince yourself that
 the monoid laws hold. Use the following definitions as a starting point:
-*/
+ */
 
 trait Semigroup[A] {
   def combine(x: A, y: A): A
@@ -31,7 +31,7 @@ object Monoid {
 
   def identityLaw[A](x: A)(implicit m: Monoid[A]): Boolean = {
     (m.combine(x, m.empty) == x) &&
-      (m.combine(m.empty, x) == x)
+    (m.combine(m.empty, x) == x)
   }
 }
 
@@ -59,7 +59,8 @@ object BooleanXorMonoid {
   implicit val booleanXorMonoid: Monoid[Boolean] = new Monoid[Boolean] {
     override def empty: Boolean = false
 
-    override def combine(x: Boolean, y: Boolean): Boolean = (x && !y) || (!x && y)
+    override def combine(x: Boolean, y: Boolean): Boolean =
+      (x && !y) || (!x && y)
   }
 
   def main(args: Array[String]): Unit = MonoidLaws.verifyLaws
@@ -69,7 +70,8 @@ object BooleanXnorMonoid {
   implicit val booleanXnorMonoid: Monoid[Boolean] = new Monoid[Boolean] {
     override def empty: Boolean = true
 
-    override def combine(x: Boolean, y: Boolean): Boolean = (!x || y) && (x || !y)
+    override def combine(x: Boolean, y: Boolean): Boolean =
+      (!x || y) && (x || !y)
 
     //      (x && y) || (!x && !y)
   }

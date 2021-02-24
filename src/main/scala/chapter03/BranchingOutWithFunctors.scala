@@ -8,7 +8,7 @@ object BranchingOutWithFunctors {
   /*
   Write a Functor for the following binary tree data type.
   Verify that the code works as expected on instances of Branch and Leaf:
-  */
+   */
   sealed trait Tree[+A]
 
   final case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
@@ -24,7 +24,7 @@ object BranchingOutWithFunctors {
       override def map[A, B](fa: Tree[A])(f: A => B): Tree[B] =
         fa match {
           case Branch(left, right) => Branch(map(left)(f), map(right)(f))
-          case Leaf(value) => Leaf(f(value))
+          case Leaf(value)         => Leaf(f(value))
         }
     }
   }
